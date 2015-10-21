@@ -198,4 +198,7 @@ parse_version(Vsn)
   when erlang:is_list(Vsn) ->
     ec_semver:parse(Vsn);
 parse_version(Vsn = {_, {_, _}}) ->
-    Vsn.
+    Vsn;
+parse_version({cmd, Cmd}) ->
+    parse_version(os:cmd(Cmd)).
+
